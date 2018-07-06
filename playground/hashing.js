@@ -1,18 +1,27 @@
 const {SHA256} = require('crypto-js');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
-var data = {
-    id: 10
-};
+var password = '123abc!';
+
+bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+        console.log(hash);
+    })
+})
+
+// var data = {
+//     id: 10
+// };
 
 //jwt.sign takes the input data from the user and 'signs' it by hashing it, the second argument
 //is the secret or the 'salt' on top of the hash that makes the hashing unique.
 //Because this unique secret is unavailable to users and lies in the server, no one can access it
-var token = jwt.sign(data, '123abc');
-console.log(`Token: ${token}`)
+// var token = jwt.sign(data, '123abc');
+// console.log(`Token: ${token}`)
 
-var decoded = jwt.verify(token, '123abc');
-console.log('Decoded: ', decoded);
+// var decoded = jwt.verify(token, '123abc');
+// console.log('Decoded: ', decoded);
 
 // var message = 'I am user number 3';
 // var hash = SHA256(message).toString();
