@@ -10,6 +10,10 @@ bcrypt.genSalt(10, (err, salt) => {
     })
 })
 
+bcrypt.compare('123!', hashedPassword, (err, res) => {
+    console.log(res);
+})
+
 // var data = {
 //     id: 10
 // };
