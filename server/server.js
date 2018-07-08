@@ -114,7 +114,6 @@ app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
 })
 
-// POST /users/login {email, password} (looking for users with matching email and hashed password)
 app.post('/users/login', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
 
